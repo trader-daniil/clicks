@@ -3,7 +3,6 @@ import os
 import argparse
 
 from dotenv import load_dotenv
-load_dotenv()
 
 
 def check_is_bitlink(token, link):
@@ -46,6 +45,7 @@ def count_clicks(token, link):
 
 
 def main():
+    load_dotenv()
     auth_token = os.environ['AUTH_TOKEN']
     parser = argparse.ArgumentParser(description='Программа сокращает ссылки')
     parser.add_argument('link', help='Переданная вами ссылка')
