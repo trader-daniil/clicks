@@ -46,16 +46,16 @@ def count_clicks(token, link):
 
 def main():
     load_dotenv()
-    auth_token = os.environ['AUTH_TOKEN']
+    bitly_token = os.environ['BITLY_TOKEN']
     parser = argparse.ArgumentParser(description='Программа сокращает ссылки')
     parser.add_argument('link', help='Переданная вами ссылка')
     args = parser.parse_args()
     try:
-        if check_is_bitlink(auth_token, args.link):
+        if check_is_bitlink(bitly_token, args.link):
             print('Количество переходов по '
-                  f'ссыдке битли: {count_clicks(auth_token, args.link)}')
+                  f'ссылке битли: {count_clicks(bitly_token, args.link)}')
         else:
-            print(shorten_link(auth_token, args.link))
+            print(shorten_link(bitly_token, args.link))
     except requests.exceptions.HTTPError:
         print('Проверьте введенную вами ссылку')
 
